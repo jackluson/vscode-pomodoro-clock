@@ -73,7 +73,7 @@
     "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "@types/mocha": "5.2.7",
+    "@types/mocha": "9.1.1",
     "@types/node": "12.20.55",
     "@types/vscode": "1.71.0",
     "mocha": "6.2.3",
