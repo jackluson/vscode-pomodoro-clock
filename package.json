@@ -1,10 +1,10 @@
 {
-  "name": "pomodoro",
-  "displayName": "Pomodoro Timer",
-  "description": "Pomodoro Timer for vscode",
-  "version": "1.1.2",
-  "publisher": "lkytal",
-  "license": "BY-NC-SA",
+  "name": "tick-timer",
+  "displayName": "tick Timer",
+  "description": "Tick Timer for vscode",
+  "version": "0.1.0",
+  "author": "jackluson",
+  "publisher": "jackluson",
   "engines": {
     "vscode": "^1.51.0"
   },
@@ -25,6 +25,14 @@
       {
         "command": "pomodoro.pausePomodoro",
         "title": "Pause Pomodoro"
+      },
+      {
+        "command": "pomodoro.continuePomodoro",
+        "title": "Continue Pomodoro"
+      },
+      {
+        "command": "pomodoro.restartPomodoro",
+        "title": "Restart Pomodoro"
       },
       {
         "command": "pomodoro.resetPomodoro",
@@ -60,6 +68,7 @@
   },
   "keywords": [
     "Pomodoro",
+    "Ticker",
     "Timer",
     "Task"
   ],

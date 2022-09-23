@@ -1,10 +1,10 @@
 enum PomodoroStatus {
-	None,
-	Work,
-	Rest,
-	Paused,
-	Break,
-	Done
+	None = 'none',
+	Work = 'working',
+	Rest = 'rest',
+	Paused = 'paused',
+	Break = 'break',
+	Done = 'done'
 }
 
 export default PomodoroStatus;

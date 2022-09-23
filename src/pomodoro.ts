@@ -46,6 +46,26 @@ class Pomodoro {
 		}
 	}
 
+	private tick() {
+		this._timer.start(() => {
+			// stop the timer if no second left
+			if (this.timer.currentTime <= 0) {
+				if (this.status === PomodoroStatus.Work) {
+					window.showInformationMessage("Work done! Take a break.");
+					this.start(PomodoroStatus.Rest);
+				}
+				else if (this.status === PomodoroStatus.Rest) {
+					window.showInformationMessage("Pause is over.");
+					this.done();
+				}
+			}
+
+			if (this.onTick) {
+				this.onTick();
+			}
+		});
+	}
+
 	// public methods
 	public start(status: PomodoroStatus = PomodoroStatus.Work) {
 		if (status === PomodoroStatus.Work || status === PomodoroStatus.Rest) {
@@ -54,28 +74,24 @@ class Pomodoro {
 			}
 
 			this.status = status;
-
-			this._timer.start(() => {
-				// stop the timer if no second left
-				if (this.timer.currentTime <= 0) {
-					if (this.status === PomodoroStatus.Work) {
-						window.showInformationMessage("Work done! Take a break.");
-						this.start(PomodoroStatus.Rest);
-					}
-					else if (this.status === PomodoroStatus.Rest) {
-						window.showInformationMessage("Pause is over.");
-						this.done();
-					}
-				}
-
-				if (this.onTick) {
-					this.onTick();
-				}
-			});
+			this.tick()
 		}
 		else {
 			console.error("Start timer error");
 		}
+	}
+
+	public continue() {
+		if (this.status === PomodoroStatus.Paused) {
+			this.status = PomodoroStatus.Work;
+			this.tick();
+		}
+	}
+
+	public restart() {
+		this.timer.reset(this.workTime);
+		this.status = PomodoroStatus.Work;
+		this.tick();
 	}
 
 	public pause() {
