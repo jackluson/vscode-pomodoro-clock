@@ -48,7 +48,7 @@
           "default": 25,
           "description": "Time of work, in minutes."
         },
-        "pomodoro.pauseTime": {
+        "pomodoro.breakTime": {
           "type": "number",
           "default": 5,
           "description": "Time of pause, in minutes"

@@ -4,7 +4,7 @@ import PomodoroManager from "./pomodoroManager";
 
 export function activate(context: vscode.ExtensionContext) {
 	const config = vscode.workspace.getConfiguration("pomodoro");
-	const pomodoroManager = new PomodoroManager(context, config.workTime, config.pauseTime, config.countdown);
+	const pomodoroManager = new PomodoroManager(context, config.workTime, config.breakTime, config.countdown);
 
 	// list of commands
 	const startDisposable = vscode.commands.registerCommand("pomodoro.startPomodoro", () => {
@@ -24,7 +24,6 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	const resetDisposable = vscode.commands.registerCommand("pomodoro.resetPomodoro", () => {
-		console.log("🚀 ~ file: extension.ts ~ line 19 ~ resetDisposable ~ pomodoroManager.currentPomodoro", pomodoroManager.currentPomodoro)
 		pomodoroManager.reset();
 	});
 

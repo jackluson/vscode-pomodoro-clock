@@ -1,65 +1,71 @@
 import { window } from "vscode";
 
-import PomodoroStatus from "./pomodoroStatus";
+import { PomodoroType, PomodoroStatus } from "./pomodoroEnum";
 import Timer from "./timer";
+
 
 class Pomodoro {
 	// properties
-	private _status: PomodoroStatus;
+	private _type: PomodoroType;
 
-	public get status() {
-		return this._status;
+	public get type() {
+		return this._type;
 	}
-	public set status(status: PomodoroStatus) {
-		this._status = status;
+	public set type(type: PomodoroType) {
+		this._type = type;
 	}
 
 	private _timer: Timer;
+	private _status: PomodoroStatus;
 
 	public get timer() {
 		return this._timer;
 	}
 
+	public get status() {
+		return this._status;
+	}
+
+	public get showTime() {
+		let totalTime = 0;
+		if (this.type === PomodoroType.Work) {
+			totalTime = this.workTime
+		} else if (this.type === PomodoroType.Break) {
+			totalTime = this.breakTime
+		}
+		if (!this.isCountDown) return this.timer.accumulateTime
+		return totalTime - this.timer.accumulateTime;
+	}
+
 	// events
 	public onTick: () => void;
 
-	constructor(public workTime: number = 25 * 60, public pauseTime: number = 5 * 60) {
+	constructor(public workTime: number = 25 * 60, public breakTime: number = 5 * 60, public isCountDown: boolean = true, type = PomodoroType.Work) {
 		this.workTime = Math.floor(this.workTime);
-		this.pauseTime = Math.floor(this.pauseTime);
-
+		this.breakTime = Math.floor(this.breakTime);
 		this._timer = new Timer();
-		this.status = PomodoroStatus.None;
+		this._type = type;
+		this._status = PomodoroStatus.None
 	}
 
 	// private methods
 	private done() {
 		this.stop();
-		this.status = PomodoroStatus.Done;
-	}
-
-	private resetTimer(status: PomodoroStatus) {
-		if (status === PomodoroStatus.Work) {
-			this.timer.reset(this.workTime);
-		}
-		if (status === PomodoroStatus.Rest) {
-			this.timer.reset(this.pauseTime);
-		}
+		this._status = PomodoroStatus.Done;
 	}
 
 	private tick() {
+		this._status = PomodoroStatus.Running
 		this._timer.start(() => {
+			console.log('tick', Math.random())
 			// stop the timer if no second left
-			if (this.timer.currentTime <= 0) {
-				if (this.status === PomodoroStatus.Work) {
-					window.showInformationMessage("Work done! Take a break.");
-					this.start(PomodoroStatus.Rest);
-				}
-				else if (this.status === PomodoroStatus.Rest) {
-					window.showInformationMessage("Pause is over.");
-					this.done();
-				}
+			if (this.type === PomodoroType.Work && this.timer.accumulateTime >= this.workTime) {
+				window.showInformationMessage("Work done! Take a break.");
+				this.start(PomodoroType.Break);
+			} else if (this.type === PomodoroType.Break && this.timer.accumulateTime >= this.breakTime) {
+				window.showInformationMessage("Break is over.");
+				this.done();
 			}
-
 			if (this.onTick) {
 				this.onTick();
 			}
@@ -67,14 +73,10 @@ class Pomodoro {
 	}
 
 	// public methods
-	public start(status: PomodoroStatus = PomodoroStatus.Work) {
-		if (status === PomodoroStatus.Work || status === PomodoroStatus.Rest) {
-			if (this.status !== PomodoroStatus.Paused) {
-				this.resetTimer(status);
-			}
-
-			this.status = status;
-			this.tick()
+	public start(status: PomodoroType = PomodoroType.Work) {
+		if (status === PomodoroType.Work || status === PomodoroType.Break || status === PomodoroType.Rest) {
+			this.type = status;
+			this.restart()
 		}
 		else {
 			console.error("Start timer error");
@@ -83,26 +85,24 @@ class Pomodoro {
 
 	public continue() {
 		if (this.status === PomodoroStatus.Paused) {
-			this.status = PomodoroStatus.Work;
 			this.tick();
 		}
 	}
 
 	public restart() {
-		this.timer.reset(this.workTime);
-		this.status = PomodoroStatus.Work;
+		this.timer.reset();
 		this.tick();
 	}
 
 	public pause() {
 		this.stop();
-		this.status = PomodoroStatus.Paused;
+		this._status = PomodoroStatus.Paused
 	}
 
 	public reset() {
-		this.stop();
-		this.status = PomodoroStatus.None;
-		this._timer.currentTime = this.workTime;
+		this._status = PomodoroStatus.None
+		this._type = PomodoroType.Work
+		this.timer.reset();
 	}
 
 	public stop() {
@@ -111,7 +111,8 @@ class Pomodoro {
 
 	public dispose() {
 		this.stop();
-		this.status = PomodoroStatus.None;
+		this.type = PomodoroType.Work;
+		this._status = PomodoroStatus.Paused
 	}
 }
 

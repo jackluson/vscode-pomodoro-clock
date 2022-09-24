@@ -1,17 +1,19 @@
 class Timer {
 	private _timerId: NodeJS.Timer;
+	private _accumulateTime: number;
 
 	public get isRunning() {
 		return this._timerId != null;
 	}
 
-	constructor(public currentTime: number = 0, public interval: number = 1000) {
+	constructor(public interval: number = 1000) {
 		this._timerId = null;
+		this._accumulateTime = 0;
 	}
 
-	public reset(time: number) {
+	public reset() {
 		this.stop();
-		this.currentTime = time;
+		this._accumulateTime = 0;
 	}
 
 	public start(callback) {
@@ -35,7 +37,11 @@ class Timer {
 	}
 
 	private tick() {
-		this.currentTime -= this.interval / 1000;
+		this._accumulateTime += this.interval / 1000;
+	}
+
+	get accumulateTime() {
+		return this._accumulateTime;
 	}
 }
 
