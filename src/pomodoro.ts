@@ -1,8 +1,5 @@
-import { window } from "vscode";
-
 import { PomodoroType, PomodoroStatus } from "./pomodoroEnum";
 import Timer from "./timer";
-
 
 class Pomodoro {
 	// properties
@@ -37,7 +34,7 @@ class Pomodoro {
 		return totalTime - this.timer.accumulateTime;
 	}
 
-	// events
+	// tick callback
 	public onTick: () => void;
 
 	constructor(public workTime: number = 25 * 60, public breakTime: number = 5 * 60, public isCountDown: boolean = true, type = PomodoroType.Work) {
@@ -50,20 +47,18 @@ class Pomodoro {
 
 	// private methods
 	private done() {
-		this.stop();
+		this.timer.reset();
 		this._status = PomodoroStatus.Done;
 	}
 
 	private tick() {
 		this._status = PomodoroStatus.Running
-		this._timer.start(() => {
-			console.log('tick', Math.random())
+		this._timer.start(async () => {
+			// console.log('tick', Math.random())
 			// stop the timer if no second left
-			if (this.type === PomodoroType.Work && this.timer.accumulateTime >= this.workTime) {
-				window.showInformationMessage("Work done! Take a break.");
-				this.start(PomodoroType.Break);
-			} else if (this.type === PomodoroType.Break && this.timer.accumulateTime >= this.breakTime) {
-				window.showInformationMessage("Break is over.");
+			if (this.type === PomodoroType.Work && this.timer.accumulateTime === this.workTime) {
+				this.done();
+			} else if (this.type === PomodoroType.Break && this.timer.accumulateTime === this.breakTime) {
 				this.done();
 			}
 			if (this.onTick) {
@@ -73,10 +68,10 @@ class Pomodoro {
 	}
 
 	// public methods
-	public start(status: PomodoroType = PomodoroType.Work) {
-		if (status === PomodoroType.Work || status === PomodoroType.Break || status === PomodoroType.Rest) {
-			this.type = status;
-			this.restart()
+	public start(type: PomodoroType = PomodoroType.Work) {
+		if (type === PomodoroType.Work || type === PomodoroType.Break || type === PomodoroType.Rest) {
+			this.type = type;
+			this.tick()
 		}
 		else {
 			console.error("Start timer error");

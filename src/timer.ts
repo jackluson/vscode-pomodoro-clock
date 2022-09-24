@@ -18,9 +18,9 @@ class Timer {
 
 	public start(callback) {
 		if (this._timerId == null) {
-			this._timerId = setInterval(() => {
+			this._timerId = setInterval(async () => {
 				this.tick();
-				callback();
+				await callback();
 			}, this.interval);
 		}
 		else {

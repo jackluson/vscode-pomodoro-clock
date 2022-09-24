@@ -14,6 +14,7 @@ class PomodoroManager {
 	}>;
 	public pomodori: Pomodoro[];
 	private _pomodoroCount: number;
+	private _breakCount: number;
 
 
 	public get currentPomodoro() {
@@ -87,13 +88,15 @@ class PomodoroManager {
 		const timerPart = ((minutes < 10) ? "0" : "") + minutes + ":" + ((seconds < 10) ? "0" : "") + seconds;
 
 		this._clockBarText.text = `$(clock) ${timerPart}`;
+		let countNumberPart = "";
 		if (this.currentPomodoro.type) {
-			let pomodoroNumberPart = "";
 
 			if (this.currentPomodoro.type === PomodoroType.Work) {
-				pomodoroNumberPart += "(" + this._pomodoroCount + ")";
+				countNumberPart += "(" + this._pomodoroCount + ")";
+			} else if (this.currentPomodoro.type === PomodoroType.Break || this.currentPomodoro.type === PomodoroType.Rest) {
+				countNumberPart += "(" + this._breakCount + ")";
 			}
-			this._typeBarText.text = `${this.currentPomodoro.type + pomodoroNumberPart}`
+			this._typeBarText.text = `${this.currentPomodoro.type + countNumberPart}`
 			this._typeBarText.show()
 		} else {
 			this._typeBarText.hide()
@@ -121,10 +124,27 @@ class PomodoroManager {
 	}
 
 
-	private tick() {
+	private async tick() {
 		if (this.currentPomodoro.status === PomodoroStatus.Done) {
-			this._pomodoroCount++;
 			this.reset()
+			if (this.currentPomodoro.type === PomodoroType.Work) {
+				this._pomodoroCount++;
+				window.showInformationMessage("Work done! Take a break.", 'Break', "Next work",).then((select) => {
+					if (select === 'Break') {
+						this.start(PomodoroType.Break);
+					} else if (select === 'Next work') {
+						this.start(PomodoroType.Work);
+					}
+				})
+			} else if (this.currentPomodoro.type === PomodoroType.Break || this.currentPomodoro.type === PomodoroType.Rest) {
+				this._breakCount++;
+				const select = await window.showInformationMessage("Break is over.", "Continue break", 'Next work');
+				if (select === 'Continue break') {
+					this.start(PomodoroType.Break);
+				} else if (select === 'Next work') {
+					this.start(PomodoroType.Work);
+				}
+			}
 		} else {
 			this.draw()
 		}
@@ -136,8 +156,8 @@ class PomodoroManager {
 	}
 
 	// public methods
-	public start() {
-		this.currentPomodoro.start();
+	public start(type: PomodoroType = PomodoroType.Work) {
+		this.currentPomodoro.start(type);
 		this.currentPomodoro.onTick = () => {
 			this.tick()
 		};
@@ -165,6 +185,7 @@ class PomodoroManager {
 	public init() {
 		this._pomodoroIndex = 0;
 		this._pomodoroCount = 1;
+		this._breakCount = 1
 		this.pomodori = [];
 		this.pomodori.push(new Pomodoro(this.workTime * 60, this.breakTime * 60, this.isCountDown));
 		this.draw()

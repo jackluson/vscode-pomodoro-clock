@@ -53,11 +53,6 @@
           "default": 5,
           "description": "Time of pause, in minutes"
         },
-        "pomodoro.repeat": {
-          "type": "number",
-          "default": 4,
-          "description": "Number of repeat before long break"
-        },
         "pomodoro.countdown": {
           "type": "boolean",
           "default": true,
