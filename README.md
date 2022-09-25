@@ -1,20 +1,28 @@
 # Tick Timer for VS Code
+<div align="center">
+<a href="https://github.com/jackluson/vscode-pomodoro-clock" target="__blank">
+  <img src="./pomodoro-clock.png" alt="Logo"/>
+</a>
+<a href="https://marketplace.visualstudio.com/items?itemName=jackluson.pomodoro-clock"><img src="https://vsmarketplacebadge.apphb.com/version/jackluson.pomodoro-clock.svg" alt="Installs"></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=jackluson.pomodoro-clock"><img src="https://vsmarketplacebadge.apphb.com/installs/jackluson.pomodoro-clock.svg" alt="Installs"></a>
+</div>
+Pomodoro clock for VS Code -- The time management for a more productive way to work on VS Code with Pomodoro technique.
 
-[![Dependency status](https://david-dm.org/lkytal/pomodoroClock.svg)](https://david-dm.org/lkytal/pomodoroClock.svg)
-<a href="https://marketplace.visualstudio.com/items?itemName=lkytal.pomodoro"><img src="https://vsmarketplacebadge.apphb.com/version/lkytal.pomodoroClock.svg" alt="Installs"></a>
-<a href="https://marketplace.visualstudio.com/items?itemName=lkytal.FlpomodoroatUI"><img src="https://vsmarketplacebadge.apphb.com/installs/lkytal.pomodoroClock.svg" alt="Installs"></a>
 
-A simple Pomodoro timer shows in the status bar.
 
-You'll find Pomodoro button here:
+## Features
+
+- Follow [Pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+- After each pomodoro, we have a short break. We have long break in 1 times each 4 (can be customized) short break times.
+- Extension show a count down(can be customized) clock and name of process.
+- Extension will show an information box to announce.
+
+A simple Pomodoro clock shows in the status bar here.
 
 ![Preview](demo.gif)
 
-After started:
 
-![Preview](button.png)
-
->Install [Pomodoro](https://marketplace.visualstudio.com/items?itemName=lkytal.pomodoro) via vs market
+>Install [Pomodoro](https://marketplace.visualstudio.com/items?itemName=jackluson.pomodoro-clock) via vs market
 
 ## Acknowledgment
 
