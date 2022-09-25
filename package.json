@@ -1,7 +1,7 @@
 {
-  "name": "tick-timer",
-  "displayName": "tick Timer",
-  "description": "Tick Timer for vscode",
+  "name": "pomodoro-clock",
+  "displayName": "pomodoroClock",
+  "description": "pomodoroClock for vscode",
   "version": "0.1.0",
   "author": "jackluson",
   "publisher": "jackluson",
@@ -15,45 +15,59 @@
     "*"
   ],
   "main": "./out/src/extension",
-  "icon": "icon.png",
+  "icon": "pomodoro-clock.png",
   "contributes": {
     "commands": [
       {
-        "command": "pomodoro.startPomodoro",
+        "command": "pomodoroClock.startPomodoro",
         "title": "Start Pomodoro"
       },
       {
-        "command": "pomodoro.pausePomodoro",
+        "command": "pomodoroClock.pausePomodoro",
         "title": "Pause Pomodoro"
       },
       {
-        "command": "pomodoro.continuePomodoro",
+        "command": "pomodoroClock.continuePomodoro",
         "title": "Continue Pomodoro"
       },
       {
-        "command": "pomodoro.restartPomodoro",
+        "command": "pomodoroClock.restartPomodoro",
         "title": "Restart Pomodoro"
       },
       {
-        "command": "pomodoro.resetPomodoro",
+        "command": "pomodoroClock.resetPomodoro",
         "title": "Reset Pomodoro"
+      },
+      {
+        "command": "pomodoroClock.toggleCurrentPomodoroCountdown",
+        "title": "toggle Current Pomodoro Countdown"
       }
     ],
     "configuration": {
       "type": "object",
-      "title": "Pomodoro Configuration",
+      "title": "PomodoroClock Configuration",
       "properties": {
-        "pomodoro.workTime": {
+        "pomodoroClock.workTime": {
           "type": "number",
           "default": 25,
           "description": "Time of work, in minutes."
         },
-        "pomodoro.breakTime": {
+        "pomodoroClock.breakTime": {
           "type": "number",
           "default": 5,
-          "description": "Time of pause, in minutes"
+          "description": "Time of break, in minutes"
         },
-        "pomodoro.countdown": {
+        "pomodoroClock.longBreakTime": {
+          "type": "number",
+          "default": 15,
+          "description": "Time of long break, in minutes"
+        },
+        "pomodoroClock.repeat": {
+          "type": "number",
+          "default": 4,
+          "description": "Number of repeat before long break"
+        },
+        "pomodoroClock.countdown": {
           "type": "boolean",
           "default": true,
           "description": "Whether to use countdown display"
@@ -63,13 +77,13 @@
   },
   "keywords": [
     "Pomodoro",
-    "Ticker",
+    "Clock",
     "Timer",
     "Task"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lkytal/pomodoro.git"
+    "url": "https://github.com/jackluson/vscode-pomodoro-clock.git"
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

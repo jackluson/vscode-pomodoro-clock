@@ -23,23 +23,30 @@ class Pomodoro {
 		return this._status;
 	}
 
-	public get showTime() {
+	public get totalTime() {
 		let totalTime = 0;
 		if (this.type === PomodoroType.Work) {
 			totalTime = this.workTime
 		} else if (this.type === PomodoroType.Break) {
 			totalTime = this.breakTime
+		} else if (this.type === PomodoroType.LongBreak) {
+			totalTime = this.longBreakTime
 		}
+		return totalTime
+	}
+
+	public get showTime() {
 		if (!this.isCountDown) return this.timer.accumulateTime
-		return totalTime - this.timer.accumulateTime;
+		return this.totalTime - this.timer.accumulateTime;
 	}
 
 	// tick callback
 	public onTick: () => void;
 
-	constructor(public workTime: number = 25 * 60, public breakTime: number = 5 * 60, public isCountDown: boolean = true, type = PomodoroType.Work) {
+	constructor(public workTime: number = 25 * 60, public breakTime: number = 5 * 60, public longBreakTime: number, public isCountDown: boolean = true, type = PomodoroType.Work) {
 		this.workTime = Math.floor(this.workTime);
 		this.breakTime = Math.floor(this.breakTime);
+		this.longBreakTime = Math.floor(this.longBreakTime);
 		this._timer = new Timer();
 		this._type = type;
 		this._status = PomodoroStatus.None
@@ -56,9 +63,9 @@ class Pomodoro {
 		this._timer.start(async () => {
 			// console.log('tick', Math.random())
 			// stop the timer if no second left
-			if (this.type === PomodoroType.Work && this.timer.accumulateTime === this.workTime) {
-				this.done();
-			} else if (this.type === PomodoroType.Break && this.timer.accumulateTime === this.breakTime) {
+			const isDone = this.type === PomodoroType.Work && this.timer.accumulateTime === this.workTime || this.type === PomodoroType.Break && this.timer.accumulateTime === this.breakTime || this.type === PomodoroType.LongBreak && this.timer.accumulateTime === this.longBreakTime
+
+			if (isDone) {
 				this.done();
 			}
 			if (this.onTick) {
@@ -69,7 +76,7 @@ class Pomodoro {
 
 	// public methods
 	public start(type: PomodoroType = PomodoroType.Work) {
-		if (type === PomodoroType.Work || type === PomodoroType.Break || type === PomodoroType.Rest) {
+		if (type) {
 			this.type = type;
 			this.tick()
 		}

@@ -1,14 +1,14 @@
 # Tick Timer for VS Code
 
-[![Dependency status](https://david-dm.org/lkytal/pomodoro.svg)](https://david-dm.org/lkytal/pomodoro.svg)
-<a href="https://marketplace.visualstudio.com/items?itemName=lkytal.pomodoro"><img src="https://vsmarketplacebadge.apphb.com/version/lkytal.pomodoro.svg" alt="Installs"></a>
-<a href="https://marketplace.visualstudio.com/items?itemName=lkytal.FlpomodoroatUI"><img src="https://vsmarketplacebadge.apphb.com/installs/lkytal.pomodoro.svg" alt="Installs"></a>
+[![Dependency status](https://david-dm.org/lkytal/pomodoroClock.svg)](https://david-dm.org/lkytal/pomodoroClock.svg)
+<a href="https://marketplace.visualstudio.com/items?itemName=lkytal.pomodoro"><img src="https://vsmarketplacebadge.apphb.com/version/lkytal.pomodoroClock.svg" alt="Installs"></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=lkytal.FlpomodoroatUI"><img src="https://vsmarketplacebadge.apphb.com/installs/lkytal.pomodoroClock.svg" alt="Installs"></a>
 
 A simple Pomodoro timer shows in the status bar.
 
 You'll find Pomodoro button here:
 
-![Preview](screenshot.png)
+![Preview](demo.gif)
 
 After started:
 

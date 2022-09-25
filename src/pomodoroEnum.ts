@@ -1,6 +1,6 @@
 export enum PomodoroType {
 	Work = 'work',
-	Rest = 'rest',
+	LongBreak = 'long break',
 	Break = 'break',
 }
 
