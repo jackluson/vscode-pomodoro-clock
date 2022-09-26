@@ -2,7 +2,7 @@
   "name": "pomodoro-clock",
   "displayName": "Pomodoro Clock",
   "description": "Pomodoro Clock for vscode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "jackluson",
   "publisher": "jackluson",
   "engines": {

@@ -53,11 +53,11 @@ A simple Pomodoro clock shows in the status bar here.
 ## Extension Settings
 This extension contributes the following settings:
 
-- pomodoroClock.workTime: Work time (in minutes, default is 25).
-- pomodoroClock.breakTime: Short break time (in minutes, default is 5).
-- pomodoroClock.longBreakTime: Long break time (in minutes, default is 15).
-- pomodoroClock.repeat: Number of repeat before long break(default is 4).
-- pomodoroClock.countdown: Whether to use countdown display(default is true).
+- `pomodoroClock.workTime`: Work time (in minutes, default is 25).
+- `pomodoroClock.breakTime`: Short break time (in minutes, default is 5).
+- `pomodoroClock.longBreakTime`: Long break time (in minutes, default is 15).
+- `pomodoroClock.repeat`: Number of repeat before long break(default is 4).
+- `pomodoroClock.countdown`: Whether to use countdown display(default is true).
 
 ## Development
 
