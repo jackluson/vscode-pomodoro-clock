@@ -48,6 +48,7 @@ A simple Pomodoro clock shows in the status bar here.
 ![Demo](./screenshots/time-up.jpg)
 
 > Pomodoro clock Extension Settings
+
 ![Demo](./screenshots/vscode-config.jpg)
 
 ## Extension Settings
