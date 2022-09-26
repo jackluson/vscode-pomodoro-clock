@@ -32,6 +32,7 @@ Pomodoro clock for VS Code -- The time management for a more productive way to w
 - Extension will show an information box to announce.
 - Be able to Start timer、Pause timer、Restart Timer、 Reset timer.
 
+> You can also use it as a simple timer when the `pomodoroClock.countdown` is `false`
 ## Install
 >Install [Pomodoro Clock](https://marketplace.visualstudio.com/items?itemName=jackluson.pomodoro-clock) via vs market
 
@@ -48,14 +49,14 @@ This extension contributes the following settings:
 - pomodoroClock.workTime: Work time (in minutes, default is 25).
 - pomodoroClock.breakTime: Short break time (in minutes, default is 5).
 - pomodoroClock.longBreakTime: Long break time (in minutes, default is 15).
-- pomodoroClock.repeat: Number of repeat before long break(default is 4)".
-- pomodoroClock.countdown: Whether to use countdown display(default is true)".
+- pomodoroClock.repeat: Number of repeat before long break(default is 4).
+- pomodoroClock.countdown: Whether to use countdown display(default is true).
 
 ## Development
 
-- yarn install
-- npm run watch or npm run compile
-- F5 to start debugging
+- `yarn install`
+- `npm run watch` or `npm run compile`
+- `F5` to start debugging
 
 ## Acknowledgment
 
