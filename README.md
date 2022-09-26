@@ -32,9 +32,10 @@ Pomodoro clock for VS Code -- The time management for a more productive way to w
 - Extension will show an information box to announce.
 - Be able to Start timer、Pause timer、Restart Timer、 Reset timer.
 
+> Tip: You can click the clock to toggle `countdown` display.
 > You can also use it as a simple timer when the `pomodoroClock.countdown` is `false`
 ## Install
->Install [Pomodoro Clock](https://marketplace.visualstudio.com/items?itemName=jackluson.pomodoro-clock) via vs market
+>Install [Pomodoro Clock](https://marketplace.visualstudio.com/items?itemName=jackluson.pomodoro-clock) via VS Code market
 
 ## Demo
 A simple Pomodoro clock shows in the status bar here.
@@ -69,7 +70,7 @@ This extension contributes the following settings:
 ## Acknowledgment
 
 > Inspired by the [Pomodoro-code](https://marketplace.visualstudio.com/items?itemName=odonno.pomodoro-code)
-> <div>some icons come from <a href="https://github.com/microsoft/vscode-codicons" title="vscode-codicons">vscode-codicons</a>
+> some icons come from <a href="https://github.com/microsoft/vscode-codicons" title="vscode-codicons">vscode-codicons</a>
 
 ## Thanks
 Thanks you star
