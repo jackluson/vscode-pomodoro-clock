@@ -39,11 +39,17 @@ Pomodoro clock for VS Code -- The time management for a more productive way to w
 ## Demo
 A simple Pomodoro clock shows in the status bar here.
 
+Pomodoro clock bar
 ![Demo](./screenshots/demo.gif)
+
+Notification
+
 ![Demo](./screenshots/time-up.jpg)
+
+Extension Settings
 ![Demo](./screenshots/vscode-config.jpg)
 
-## Extension Settings
+#Extension Settings
 This extension contributes the following settings:
 
 - pomodoroClock.workTime: Work time (in minutes, default is 25).
