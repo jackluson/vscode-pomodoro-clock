@@ -62,3 +62,6 @@ This extension contributes the following settings:
 
 > Inspired by the [Pomodoro-code](https://marketplace.visualstudio.com/items?itemName=odonno.pomodoro-code)
 > <div>some icons come from <a href="https://github.com/microsoft/vscode-codicons" title="vscode-codicons">vscode-codicons</a>
+
+## Thanks
+Thanks you star
