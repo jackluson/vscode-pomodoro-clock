@@ -29,8 +29,9 @@ Pomodoro clock for VS Code -- The time management for a more productive way to w
 - Follow [Pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 - After each pomodoro, we have a short break. We have long break in 1 times each 4 (can be customized) short break times.
 - Extension show a count down(can be customized) clock and name of process.
-- Extension will show an information box to announce.
-- Be able to Start timer、Pause timer、Restart Timer、 Reset timer.
+- When the time is up, there will be a notification prompt and a shortcut action button.
+- Ability to Start timer、Pause timer、Restart Timer、 Reset timer on statu bar.
+- Provides a simple statistical function that can count the number of Pomodoro clocks today
 
 > Tip: You can click the clock to toggle `countdown` display.
 > You can also use it as a simple timer when the `pomodoroClock.countdown` is `false`
@@ -60,6 +61,8 @@ This extension contributes the following settings:
 - `pomodoroClock.longBreakTime`: Long break time (in minutes, default is 15).
 - `pomodoroClock.repeat`: Number of repeat before long break(default is 4).
 - `pomodoroClock.countdown`: Whether to use countdown display(default is true).
+
+> Tip: Reload window to apply the settings. (except `pomodoroClock.countdown`, it will take effect immediately)
 
 ## Development
 
