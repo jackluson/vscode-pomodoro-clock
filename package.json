@@ -6,7 +6,7 @@
   "author": "jackluson",
   "publisher": "jackluson",
   "engines": {
-    "vscode": "^1.64.0"
+    "vscode": "^2023.0.0"
   },
   "categories": [
     "Other"
