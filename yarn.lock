@@ -12,10 +12,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.60.tgz#a1fbca80c18dd80c8783557304cdb7d55ac3aff5"
   integrity sha512-kYIYa1D1L+HDv5M5RXQeEu1o0FKA6yedZIoyugm/MBPROkLpX4L7HRxMrPVyo8bnvjpW/wDlqFNGzXNMb7AdRw==
 
-"@types/vscode@1.64.0":
-  version "1.64.0"
-  resolved "https://registry.npmmirror.com/@types/vscode/-/vscode-1.64.0.tgz#bfd82c8d92dc7824c1be084be1ab46ce20d7fb55"
-  integrity sha512-bSlAWz5WtcSL3cO9tAT/KpEH9rv5OBnm93OIIFwdCshaAiqr2bp1AUyEwW9MWeCvZBHEXc3V0fTYVdVyzDNwHA==
+"@types/vscode@1.94.0":
+  version "1.94.0"
+  resolved "https://registry.yarnpkg.com/@types/vscode/-/vscode-1.94.0.tgz#ccd2111b6ecaba6ad4da19c2d524828fa73ae250"
+  integrity sha512-UyQOIUT0pb14XSqJskYnRwD2aG0QrPVefIfrW1djR+/J4KeFQ0i1+hjZoaAmeNf3Z2jleK+R2hv+EboG/m8ruw==
 
 ansi-colors@3.2.3:
   version "3.2.3"
